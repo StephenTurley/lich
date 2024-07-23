@@ -17,7 +17,7 @@ defmodule LichWeb.Router do
   scope "/", LichWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", Session.Index
   end
 
   import Phoenix.LiveDashboard.Router
