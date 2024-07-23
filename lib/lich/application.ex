@@ -9,7 +9,9 @@ defmodule Lich.Application do
   def start(_type, _args) do
     children = [
       LichWeb.Telemetry,
-      {DNSCluster, query: Application.get_env(:lich, :dns_cluster_query) || :ignore},
+      {Cluster.Supervisor,
+       [Application.get_env(:libcluster, :topologies), [name: Lich.ClusterSupervisor]]},
+      # {DNSCluster, query: Application.get_env(:lich, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Lich.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: Lich.Finch},

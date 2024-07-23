@@ -19,6 +19,8 @@ config :lich, LichWeb.Endpoint,
     tailwind: {Tailwind, :install_and_run, [:lich, ~w(--watch)]}
   ]
 
+config :libcluster, topologies: []
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

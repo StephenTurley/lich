@@ -50,6 +50,20 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
+  config :libcluster,
+    topologies: [
+      default: [
+        strategy: Elixir.Cluster.Strategy.Kubernetes,
+        config: [
+          mode: :ip,
+          kubernetes_node_basename: "lich",
+          kubernetes_selector: "app.kubernetes.io/name=lich",
+          kubernetes_namespace: "default",
+          polling_interval: 10_000
+        ]
+      ]
+    ]
+
   # ## SSL Support
   #
   # To get SSL working, you will need to add the `https` key
