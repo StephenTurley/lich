@@ -56,7 +56,8 @@ defmodule Lich.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      {:libcluster, "~> 3.3"}
+      {:libcluster, "~> 3.3"},
+      {:horde, "~> 0.9.0"}
     ]
   end
 

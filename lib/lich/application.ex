@@ -18,6 +18,9 @@ defmodule Lich.Application do
       # Start a worker by calling: Lich.Worker.start_link(arg)
       # {Lich.Worker, arg},
       # Start to serve requests, typically the last entry
+      {Horde.DynamicSupervisor,
+       name: Lich.SessionSupervisor, strategy: :one_for_one, members: :auto},
+      {Horde.Registry, keys: :unique, name: Lich.SessionRegistry, members: :auto},
       LichWeb.Endpoint
     ]
 
