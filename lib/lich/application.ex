@@ -21,7 +21,15 @@ defmodule Lich.Application do
       {Horde.DynamicSupervisor,
        name: Lich.SessionSupervisor, strategy: :one_for_one, members: :auto},
       {Horde.Registry, keys: :unique, name: Lich.SessionRegistry, members: :auto},
-      LichWeb.Endpoint
+      LichWeb.Endpoint,
+      {FLAME.Pool,
+       name: Lich.FlamePool,
+       backend: FLAMEK8sBackend,
+       min: 0,
+       max: 10,
+       max_concurrency: 5,
+       idle_shutdown_after: 30_000,
+       log: :debug}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

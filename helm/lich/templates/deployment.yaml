@@ -47,6 +47,20 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: status.podIP
+          - name: RELEASE_DISTRIBUTION
+            value: name
+          - name: RELEASE_NODE
+            value: lich@$(POD_IP)
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}

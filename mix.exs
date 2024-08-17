@@ -57,7 +57,9 @@ defmodule Lich.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:libcluster, "~> 3.3"},
-      {:horde, "~> 0.9.0"}
+      {:horde, "~> 0.9.0"},
+      {:flame, "~> 0.2"},
+      {:flame_k8s_backend, "~> 0.4.0"}
     ]
   end
 
